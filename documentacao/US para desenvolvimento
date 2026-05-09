@@ -1,0 +1,1030 @@
+# KAIROS
+
+## Backlog de User Stories Detalhadas
+
+---
+
+## Status de Execucao (atualizado em 2026-05-09)
+
+Legenda:
+- `CONCLUIDA`: implementada e validada no projeto atual
+- `PARCIAL`: implementada parcialmente, faltam itens de criterio de aceite
+- `PENDENTE`: ainda nao iniciada
+
+| US | Status | Observacao |
+|---|---|---|
+| US-001 | PARCIAL | Governanca local documentada (`documentacao/git-governance.md`), mas validacao de repositorio GitHub/branches protegidas depende do remoto. |
+| US-002 | CONCLUIDA | Base Next.js + TypeScript + Tailwind + ESLint + Prettier criada e buildando. |
+| US-003 | CONCLUIDA | Layout principal com sidebar/header/conteudo e navegacao entre modulos. |
+| US-004 | CONCLUIDA | `.env.example`, `.env.local`, validacao (`env:check`) e separacao publico/privado implementadas. |
+| US-005 | CONCLUIDA | Clientes Supabase em uso real no backend; conexao validada via healthcheck e fluxos funcionais. |
+| US-006 | PARCIAL | Schema evoluido com novas migracoes (incluindo auditoria de integracoes), mantendo necessidade de aplicacao/validacao continua em ambiente remoto. |
+| US-007 | CONCLUIDA | Tela `/chat` funcional com envio, loading e diferenciacao de mensagens. |
+| US-008 | CONCLUIDA | Autenticacao aplicada nas APIs operacionais via `KAIROS_API_KEY` (header `x-kairos-api-key` ou `Authorization: Bearer`), com isolamento por `x-kairos-user-id` e ajuste de acesso por conversa. |
+| US-009 | CONCLUIDA | Integracao OpenAI validada com chave funcional; fallback local mantido para resiliencia. |
+| US-010 | CONCLUIDA | Kairos Core inicial com classificacao de intencao, selecao manual e fallback. |
+| US-011 | CONCLUIDA | Persistencia de conversas/mensagens e historico validada fim a fim. |
+| US-012 | CONCLUIDA | Especialista Geral inicial funcional via prompt dedicado. |
+| US-013 | CONCLUIDA | Especialista PM aprofundado com estrutura analitica obrigatoria (contexto, diagnostico, riscos, plano, decisoes e proximos passos) e preservacao de contexto/memoria. |
+| US-014 | CONCLUIDA | Especialista Study inicial funcional via prompt dedicado. |
+| US-015 | CONCLUIDA | Especialista Translate inicial funcional via prompt dedicado. |
+| US-016 | CONCLUIDA | Memory Layer consolidado com recuperacao contextual ativa no Core, busca semantica/hibrida e endpoint dedicado de memorias relevantes para diagnostico. |
+| US-017 | CONCLUIDA | Embeddings OpenAI + busca semantica via pgvector validadas com RPC `match_memories` em execucao real. |
+| US-018 | CONCLUIDA | Compression engine implementado com resumo automatico, arquivamento de memorias antigas e preservacao de memorias criticas P0/P1. |
+| US-019 | CONCLUIDA | Sistema de prioridade P0-P4 implementado com fixacao manual, sugestao/aplicacao automatica e descarte automatico de memorias obsoletas. |
+| US-020 | CONCLUIDA | Governanca de memoria concluida com editar, fixar, obsoleta, repriorizar e feedback explicito util/nao util. |
+| US-021 | CONCLUIDA | Decision engine concluido com criacao, historico, status e suporte a contexto operacional (com compatibilidade legado). |
+| US-022 | CONCLUIDA | Tela Daily consolidada com prioridades, pendencias, agenda, riscos externos e perguntas inteligentes com base em memoria/decisoes/env. |
+| US-023 | CONCLUIDA | Daily automatico com resumo contextual, sugestoes coerentes e perguntas inteligentes geradas a partir de memoria, decisoes e contexto operacional. |
+| US-024 | CONCLUIDA | Camada de integracoes criada em `services/integrations`, com adapters desacoplados, logs operacionais, monitoramento e endpoint `/api/integrations/health`. |
+| US-025 | CONCLUIDA | Integracao Gmail implementada com healthcheck, leitura segura de mensagens via API server-side e logs operacionais. |
+| US-026 | CONCLUIDA | Integracao Google Calendar implementada com healthcheck, leitura segura de eventos e agenda Daily contextualizada por compromissos futuros. |
+| US-027 | CONCLUIDA | Integracao Google Drive implementada com healthcheck, leitura segura de arquivos via metadados e respeito a permissoes/escopos do token OAuth. |
+| US-028 | CONCLUIDA | Integracao Azure DevOps implementada com healthcheck, leitura de projetos/work items e contexto operacional integrado ao Daily. |
+| US-029 | CONCLUIDA | Integracao n8n implementada com fluxos acionaveis (API/webhook), logs operacionais e monitoramento de execucoes. |
+
+### Ajuste Arquitetural de Voz (documento complementar)
+
+| Item | Status | Observacao |
+|---|---|---|
+| VOICE-001 | CONCLUIDA | Endpoint `/api/voice` em OpenAI TTS + botao "Ouvir resposta" implementados, com fallback de erro e arquitetura desacoplada para troca futura de provedor. |
+
+---
+
+# FASE 1 – FUNDAÇÃO TÉCNICA
+
+# US-001 – Criar repositório GitHub do projeto
+
+## Objetivo
+
+Criar o repositório oficial do Kairos para versionamento e organização do desenvolvimento.
+
+## Descrição
+
+Como dono do produto,
+quero que o projeto Kairos seja criado em um repositório GitHub estruturado,
+para permitir desenvolvimento organizado, integração com Vercel e evolução contínua.
+
+---
+
+## Tarefas Técnicas
+
+### GitHub
+
+* Criar repositório chamado `kairos` ou `kairos-ai-os`
+* Definir repositório privado inicialmente
+* Criar branch `main`
+* Criar branch `dev`
+* Configurar proteção básica da branch `main`
+
+### Estrutura inicial
+
+* Criar README.md
+* Criar LICENSE
+* Criar `.gitignore`
+* Criar `.env.example`
+* Criar pasta `/docs`
+
+### Organização
+
+* Definir padrão de commits
+* Definir padrão de nomenclatura de branches
+* Configurar pull requests
+
+---
+
+## Critérios de Aceite
+
+* Repositório criado
+* Branches `main` e `dev` existentes
+* README funcional
+* `.env.example` criado
+* Projeto pode ser clonado localmente
+* Estrutura inicial organizada
+
+---
+
+# US-002 – Criar projeto base Next.js
+
+## Objetivo
+
+Criar aplicação base do Kairos.
+
+## Descrição
+
+Como DEV,
+quero criar o projeto inicial em Next.js,
+para permitir desenvolvimento fullstack centralizado.
+
+---
+
+## Tarefas Técnicas
+
+### Inicialização
+
+* Criar projeto com Next.js App Router
+* Habilitar TypeScript
+* Instalar Tailwind CSS
+* Configurar ESLint
+* Configurar Prettier
+
+### Estrutura inicial
+
+Criar:
+
+```text
+/app
+/components
+/lib
+/services
+/hooks
+/types
+/styles
+/database
+```
+
+### Configuração
+
+* Configurar aliases
+* Configurar variáveis de ambiente
+* Configurar scripts npm
+
+---
+
+## Critérios de Aceite
+
+* Projeto executa com `npm run dev`
+* Build executa sem erros
+* Tailwind funcionando
+* TypeScript funcionando
+* Estrutura inicial criada
+
+---
+
+# US-003 – Criar layout inicial do Kairos
+
+## Objetivo
+
+Criar interface base do sistema.
+
+## Descrição
+
+Como usuário,
+quero acessar uma interface organizada do Kairos,
+para navegar entre funcionalidades do sistema.
+
+---
+
+## Tarefas Técnicas
+
+### Layout
+
+* Criar layout principal
+* Criar sidebar
+* Criar header
+* Criar content area
+
+### Navegação
+
+Criar menus:
+
+```text
+Dashboard
+Chat
+Daily
+Projetos
+Memória
+Configurações
+```
+
+### Responsividade
+
+* Desktop
+* Tablet
+* Mobile
+
+---
+
+## Critérios de Aceite
+
+* Layout responsivo
+* Sidebar funcional
+* Navegação funcionando
+* Estrutura visual consistente
+* Interface adaptada para mobile
+
+---
+
+# US-004 – Configurar variáveis de ambiente
+
+## Objetivo
+
+Separar credenciais públicas e privadas.
+
+## Descrição
+
+Como sistema,
+quero organizar variáveis de ambiente,
+para garantir segurança e flexibilidade.
+
+---
+
+## Variáveis públicas
+
+```env
+NEXT_PUBLIC_APP_URL=
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+## Variáveis privadas
+
+```env
+OPENAI_API_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+```
+
+---
+
+## Tarefas Técnicas
+
+* Criar `.env.example`
+* Criar validação de ambiente
+* Garantir separação frontend/backend
+* Garantir que segredos não sejam expostos
+
+---
+
+## Critérios de Aceite
+
+* Variáveis organizadas
+* Nenhuma chave real no repositório
+* Frontend não expõe variáveis privadas
+* Aplicação valida ausência de variáveis obrigatórias
+
+---
+
+# US-005 – Configurar Supabase
+
+## Objetivo
+
+Conectar Kairos ao banco de dados.
+
+## Descrição
+
+Como sistema,
+quero integrar Supabase,
+para permitir autenticação, memória e persistência.
+
+---
+
+## Tarefas Técnicas
+
+### Clientes
+
+* Criar client frontend
+* Criar client server-side
+* Criar conexão segura
+
+### Estrutura
+
+Criar:
+
+```text
+/lib/supabase/client.ts
+/lib/supabase/server.ts
+```
+
+### Testes
+
+* Criar teste simples de conexão
+
+---
+
+## Critérios de Aceite
+
+* Frontend conectado
+* Backend conectado
+* Service role restrita ao backend
+* Sem exposição de segredos
+
+---
+
+# US-006 – Criar modelo inicial do banco
+
+## Objetivo
+
+Criar estrutura inicial da memória e operação.
+
+## Descrição
+
+Como sistema,
+quero possuir tabelas estruturadas,
+para armazenar contexto, memória e histórico.
+
+---
+
+## Tabelas
+
+```text
+profiles
+conversations
+messages
+memories
+projects
+decisions
+agent_runs
+```
+
+---
+
+## Campos mínimos esperados
+
+### profiles
+
+* id
+* user_id
+* nome
+* profissao
+* estilo_comunicacao
+* objetivos
+* created_at
+
+### conversations
+
+* id
+* user_id
+* titulo
+* created_at
+
+### messages
+
+* id
+* conversation_id
+* role
+* content
+* specialist
+* created_at
+
+### memories
+
+* id
+* user_id
+* tipo
+* prioridade
+* conteudo
+* embedding
+* created_at
+
+### decisions
+
+* id
+* user_id
+* titulo
+* motivo
+* impacto
+* status
+* created_at
+
+---
+
+## Critérios de Aceite
+
+* Scripts SQL criados
+* Banco criado no Supabase
+* Relacionamentos básicos funcionando
+* Campos de auditoria existentes
+
+---
+
+# FASE 2 – NÚCLEO DO KAIROS
+
+# US-007 – Criar tela principal de chat
+
+## Objetivo
+
+Permitir interação principal com o Kairos.
+
+## Descrição
+
+Como usuário,
+quero conversar com o Kairos,
+para realizar perguntas, comandos e interações operacionais.
+
+---
+
+## Tarefas Técnicas
+
+### Interface
+
+* Criar página `/chat`
+* Criar lista de mensagens
+* Criar campo de texto
+* Criar botão enviar
+* Criar loading
+
+### UX
+
+* Diferenciar mensagens do usuário
+* Diferenciar mensagens do Kairos
+* Auto scroll
+* Enter para enviar
+
+---
+
+## Critérios de Aceite
+
+* Usuário consegue enviar mensagens
+* Mensagens aparecem na tela
+* Loading aparece corretamente
+* Interface funciona em mobile
+* Conversa possui scroll funcional
+
+---
+
+# US-008 – Criar API de chat
+
+## Objetivo
+
+Criar endpoint central de comunicação.
+
+## Descrição
+
+Como sistema,
+quero receber mensagens do frontend,
+para processar solicitações via backend.
+
+---
+
+## Tarefas Técnicas
+
+### Endpoint
+
+Criar:
+
+```text
+/api/chat
+```
+
+### Payload esperado
+
+```json
+{
+  "message": "texto",
+  "conversationId": "uuid",
+  "selectedSpecialist": "pm"
+}
+```
+
+### Funcionalidades
+
+* Validar payload
+* Validar autenticação
+* Tratar erros
+* Retornar JSON padronizado
+
+---
+
+## Critérios de Aceite
+
+* Endpoint aceita POST
+* Payload inválido retorna erro
+* Resposta padronizada
+* Logs de erro registrados
+
+---
+
+# US-009 – Integrar OpenAI API
+
+## Objetivo
+
+Permitir respostas reais de IA.
+
+## Descrição
+
+Como usuário,
+quero receber respostas inteligentes,
+para utilizar o Kairos operacionalmente.
+
+---
+
+## Tarefas Técnicas
+
+### Configuração
+
+Criar:
+
+```text
+/lib/openai.ts
+```
+
+### Funcionalidades
+
+* Configurar client OpenAI
+* Criar chamada server-side
+* Configurar modelos
+* Criar system prompt inicial
+
+### Modelos
+
+* GPT-4o mini para operações leves
+* GPT-4.1 para operações complexas
+
+---
+
+## Critérios de Aceite
+
+* Chat retorna resposta real da IA
+* Chaves não expostas
+* Erros tratados corretamente
+* Modelo selecionável
+
+---
+
+# US-010 – Criar Kairos Core inicial
+
+## Objetivo
+
+Criar núcleo central de roteamento.
+
+## Descrição
+
+Como sistema,
+quero identificar intenção do usuário,
+para selecionar especialista adequado.
+
+---
+
+## Especialistas iniciais
+
+```text
+general
+pm
+study
+translate
+tech
+writer
+research
+```
+
+---
+
+## Tarefas Técnicas
+
+* Criar serviço `kairos-core.ts`
+* Criar classificação simples de intenção
+* Permitir seleção manual
+* Criar fallback para especialista geral
+* Registrar especialista utilizado
+
+---
+
+## Critérios de Aceite
+
+* Usuário pode escolher especialista
+* Sistema roteia automaticamente quando necessário
+* Logs registram especialista utilizado
+* Fallback funcional
+
+---
+
+# US-011 – Persistir conversas e mensagens
+
+## Objetivo
+
+Manter histórico contínuo.
+
+## Descrição
+
+Como usuário,
+quero que minhas conversas sejam salvas,
+para continuar contexto futuramente.
+
+---
+
+## Tarefas Técnicas
+
+* Salvar mensagens
+* Criar histórico de conversas
+* Abrir conversa existente
+* Recuperar contexto
+* Criar título automático da conversa
+
+---
+
+## Critérios de Aceite
+
+* Conversas persistem
+* Histórico funcional
+* Conversa reabre corretamente
+* Mensagens carregam em ordem correta
+
+---
+
+# FASE 3 – ESPECIALISTAS
+
+# US-012 – Implementar Kairos Geral
+
+## Objetivo
+
+Criar especialista genérico.
+
+## Funções
+
+* conversa geral
+* organização
+* orientação
+* produtividade
+
+---
+
+## Critérios de Aceite
+
+* Responde contextualizado
+* Usa memória disponível
+* Mantém coerência operacional
+
+---
+
+# US-013 – Implementar Kairos PM
+
+## Objetivo
+
+Criar especialista operacional de projetos.
+
+## Funções
+
+* resumo executivo
+* backlog
+* riscos
+* planejamento
+* próximos passos
+* cronograma
+
+---
+
+## Critérios de Aceite
+
+* Respostas estruturadas
+* Linguagem profissional
+* Pode salvar decisões
+* Pode recuperar contexto de projeto
+
+---
+
+# US-014 – Implementar Kairos Study
+
+## Objetivo
+
+Criar especialista de estudos.
+
+## Funções
+
+* resumo
+* explicação
+* revisão
+* perguntas
+* adaptação de dificuldade
+
+---
+
+## Critérios de Aceite
+
+* Explica conceitos corretamente
+* Cria perguntas
+* Adapta linguagem
+* Usa contexto anterior
+
+---
+
+# US-015 – Implementar Kairos Translate
+
+## Objetivo
+
+Criar especialista de tradução.
+
+## Funções
+
+* tradução
+* explicação de expressões
+* contexto de uso
+* exemplos práticos
+
+---
+
+## Critérios de Aceite
+
+* Traduções corretas
+* Explicações contextuais
+* Exemplos coerentes
+
+---
+
+# FASE 4 – MEMÓRIA AVANÇADA
+
+# US-016 – Criar Memory Layer
+
+## Objetivo
+
+Transformar o Kairos em sistema contextual.
+
+## Descrição
+
+Como sistema,
+quero recuperar memórias relevantes,
+para enriquecer respostas.
+
+---
+
+## Tarefas Técnicas
+
+* Criar serviço de memória
+* Buscar memórias relevantes
+* Injetar contexto nos prompts
+* Salvar novas memórias
+
+---
+
+## Critérios de Aceite
+
+* Sistema utiliza contexto salvo
+* Memórias relevantes recuperadas
+* Contexto melhora respostas
+
+---
+
+# US-017 – Implementar embeddings
+
+## Objetivo
+
+Permitir recuperação semântica.
+
+## Tarefas Técnicas
+
+* Configurar pgvector
+* Gerar embeddings
+* Salvar embeddings
+* Buscar similaridade semântica
+
+---
+
+## Critérios de Aceite
+
+* Embeddings gerados corretamente
+* Busca semântica funcional
+* Recuperação contextual eficiente
+
+---
+
+# US-018 – Criar Memory Compression Engine
+
+## Objetivo
+
+Controlar crescimento do contexto.
+
+## Tarefas Técnicas
+
+* Criar sumarização de memórias antigas
+* Criar hierarquia de relevância
+* Criar descarte contextual
+* Criar compressão automática
+
+---
+
+## Critérios de Aceite
+
+* Contexto reduzido automaticamente
+* Informações críticas preservadas
+* Tokens reduzidos
+
+---
+
+# US-019 – Criar Memory Priority System
+
+## Prioridades
+
+```text
+P0 crítico permanente
+P1 alta relevância
+P2 contexto ativo
+P3 temporária
+P4 descartável
+```
+
+---
+
+## Tarefas Técnicas
+
+* Criar classificação de memória
+* Permitir fixação manual
+* Permitir sugestão automática
+* Permitir descarte automático
+
+---
+
+## Critérios de Aceite
+
+* Toda memória possui prioridade
+* Memórias críticas preservadas
+* Sistema ignora memórias descartáveis
+
+---
+
+# US-020 – Criar sistema de feedback
+
+## Objetivo
+
+Permitir governança de memória.
+
+## Funcionalidades
+
+* útil/não útil
+* corrigir memória
+* fixar memória
+* marcar obsoleta
+* editar memória
+
+---
+
+## Critérios de Aceite
+
+* Usuário consegue corrigir contexto
+* Sistema registra feedback
+* Memórias podem ser ajustadas
+
+---
+
+# US-021 – Criar Decision Engine
+
+## Objetivo
+
+Salvar raciocínio operacional.
+
+## Campos
+
+* decisão
+* motivo
+* contexto
+* impacto
+* projeto relacionado
+* status
+
+---
+
+## Critérios de Aceite
+
+* Decisões persistidas
+* Motivos registrados
+* Histórico consultável
+
+---
+
+# FASE 5 – KAIROS DAILY
+
+# US-022 – Criar tela Daily
+
+## Objetivo
+
+Criar rotina operacional diária.
+
+## Funcionalidades
+
+* prioridades
+* pendências
+* agenda
+* riscos
+* perguntas inteligentes
+
+---
+
+## Critérios de Aceite
+
+* Daily funcional
+* Dados reais carregados
+* Interface organizada
+
+---
+
+# US-023 – Gerar Daily automaticamente
+
+## Objetivo
+
+Gerar resumo diário contextual.
+
+## Tarefas Técnicas
+
+* Ler memórias
+* Ler projetos
+* Gerar resumo
+* Criar perguntas inteligentes
+
+---
+
+## Critérios de Aceite
+
+* Daily gerado automaticamente
+* Sugestões coerentes
+* Perguntas relevantes
+
+---
+
+# FASE 6 – AUTOMAÇÕES
+
+# US-024 – Criar camada de integrações
+
+## Objetivo
+
+Preparar integrações externas.
+
+## Tarefas Técnicas
+
+* Criar `/services/integrations`
+* Criar logs
+* Criar monitoramento
+* Criar estrutura genérica
+
+---
+
+## Critérios de Aceite
+
+* Estrutura pronta
+* Logs funcionando
+* Integrações desacopladas
+
+---
+
+# US-025 – Integrar Gmail
+
+## Objetivo
+
+Permitir leitura e automação de emails.
+
+---
+
+## Critérios de Aceite
+
+* Conexão funcional
+* Leitura segura
+* Logs registrados
+
+---
+
+# US-026 – Integrar Google Calendar
+
+## Objetivo
+
+Permitir acompanhamento operacional de agenda.
+
+---
+
+## Critérios de Aceite
+
+* Eventos recuperados
+* Agenda contextualizada
+
+---
+
+# US-027 – Integrar Google Drive
+
+## Objetivo
+
+Permitir acesso contextual a documentos.
+
+---
+
+## Critérios de Aceite
+
+* Arquivos acessíveis
+* Permissões respeitadas
+
+---
+
+# US-028 – Integrar Azure DevOps
+
+## Objetivo
+
+Permitir acompanhamento de projetos técnicos.
+
+---
+
+## Critérios de Aceite
+
+* Work items acessíveis
+* Projetos vinculados
+* Contexto operacional integrado
+
+---
+
+# US-029 – Integrar n8n
+
+## Objetivo
+
+Permitir automações operacionais.
+
+---
+
+## Critérios de Aceite
+
+* Fluxos acionáveis
+* Logs registrados
+* Execuções monitoradas

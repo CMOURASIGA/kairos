@@ -1,0 +1,324 @@
+# KAIROS
+## Sistema Cognitivo Operacional Pessoal
+
+---
+
+# OBJETIVO DO PROJETO
+
+O Kairos será uma plataforma de inteligência operacional contínua.
+
+Não será apenas um chatbot ou um conjunto de prompts isolados.
+
+O objetivo é construir um sistema capaz de:
+- manter memória persistente
+- entender contexto contínuo
+- acompanhar projetos e rotinas
+- evoluir junto ao usuário
+- centralizar conhecimento
+- auxiliar em decisões
+- reduzir carga mental
+- organizar vida pessoal e profissional
+
+O Kairos deverá funcionar como:
+- assistente pessoal
+- copiloto operacional
+- sistema de memória
+- central de produtividade
+- ferramenta de estudos
+- inteligência contextual contínua
+
+---
+
+# CONCEITO CENTRAL
+
+## Memória única compartilhada
+
+O Kairos terá:
+- um núcleo central
+- uma camada única de memória
+- múltiplos especialistas internos
+
+Os especialistas NÃO possuirão memória própria.
+
+Toda a inteligência compartilhará:
+- contexto
+- histórico
+- decisões
+- preferências
+- aprendizados
+
+---
+
+# ARQUITETURA CONCEITUAL
+
+```text
+Usuário
+↓
+Kairos Core
+↓
+Memory Layer
+↓
+Roteamento Inteligente
+↓
+Especialista Adequado
+↓
+Resposta + Aprendizado
+```
+
+---
+
+# PRINCÍPIOS DO SISTEMA
+
+## 1. CONTINUIDADE
+
+O Kairos deve lembrar:
+- projetos
+- decisões
+- contexto
+- preferências
+- padrões
+- histórico operacional
+
+---
+
+## 2. CONTEXTO COMPARTILHADO
+
+Todos os especialistas compartilharão:
+- memória
+- decisões
+- histórico
+- preferências
+- contexto operacional
+
+---
+
+## 3. APRENDIZADO ESTRUTURADO
+
+O Kairos NÃO treinará modelos próprios inicialmente.
+
+O aprendizado ocorrerá através de:
+- memória contextual
+- feedback do usuário
+- priorização de informações
+- padrões operacionais
+- decisões recorrentes
+- perfil cognitivo do usuário
+
+---
+
+## 4. INTELIGÊNCIA OPERACIONAL
+
+O objetivo não é apenas responder perguntas.
+
+O objetivo é:
+- acompanhar
+- organizar
+- contextualizar
+- sugerir
+- auxiliar decisões
+- gerar continuidade operacional
+
+---
+
+# ESPECIALISTAS
+
+```text
+Kairos Core
+├── Kairos Geral
+├── Kairos PM
+├── Kairos Study
+├── Kairos Translate
+├── Kairos Tech
+├── Kairos Writer
+├── Kairos Research
+```
+
+---
+
+# CASO DE USO ÂNCORA
+
+O Kairos NÃO nascerá como:
+“um assistente genérico que faz tudo”.
+
+O foco principal inicial será:
+
+# Kairos PM + Kairos Daily
+
+Objetivo:
+- gestão operacional
+- acompanhamento contextual
+- decisões contínuas
+- produtividade
+- rotina diária inteligente
+
+As demais funcionalidades funcionarão como complementares:
+- tradução
+- estudos
+- escrita
+- pesquisa
+- tecnologia
+
+---
+
+# MEMORY LAYER
+
+A memória será uma camada invisível de infraestrutura.
+
+O usuário NÃO precisará conversar com “um especialista de memória”.
+
+Todos os especialistas utilizarão:
+- contexto compartilhado
+- memória semântica
+- decisões anteriores
+- histórico operacional
+- preferências do usuário
+
+---
+
+# MEMORY COMPRESSION ENGINE
+
+O Kairos possuirá:
+- compressão de memória
+- hierarquia contextual
+- priorização semântica
+- sumarização de histórico
+
+Objetivos:
+- reduzir custo de tokens
+- evitar crescimento infinito de contexto
+- manter respostas relevantes
+- preservar informações importantes
+
+---
+
+# DECISION ENGINE
+
+O Kairos armazenará:
+- decisões
+- motivos
+- contexto da decisão
+- impacto esperado
+- histórico estratégico
+
+Exemplo:
+
+```text
+Decisão:
+Utilizar PostgreSQL
+
+Motivos:
+- baixo custo
+- compatibilidade com Supabase
+- escalabilidade
+- facilidade operacional
+```
+
+---
+
+# KAIROS GENESIS
+## Onboarding Cognitivo
+
+O Kairos terá um onboarding inicial estruturado.
+
+Objetivo:
+- reduzir cold start
+- acelerar aprendizado contextual
+- tornar o sistema útil desde o primeiro uso
+
+---
+
+# PERFIS INICIAIS
+
+## Perfil pessoal
+- nome
+- profissão
+- rotina
+- interesses
+- objetivos
+
+---
+
+## Perfil operacional
+- projetos ativos
+- ferramentas utilizadas
+- stack tecnológica
+- responsabilidades
+
+---
+
+## Perfil cognitivo
+- formalidade
+- estilo de resposta
+- respostas curtas ou longas
+- áreas prioritárias
+- forma de comunicação
+
+---
+
+# KAIROS DAILY
+
+O Kairos terá uma rotina operacional diária inteligente.
+
+Objetivos:
+- criar hábito
+- gerar retenção
+- acelerar aprendizado contextual
+- centralizar rotina operacional
+
+---
+
+# O DAILY APRESENTARÁ
+
+## Operação diária
+- prioridades
+- pendências
+- agenda
+- riscos
+- follow-ups
+
+---
+
+## Inteligência contextual
+- padrões detectados
+- insights
+- recomendações
+
+---
+
+## Perguntas inteligentes
+- mudanças de prioridade
+- atualização de contexto
+- revisão de memórias
+- acompanhamento de projetos
+
+---
+
+# STACK TECNOLÓGICA
+
+| Camada | Tecnologia |
+|---|---|
+| Frontend | Next.js |
+| UI | Tailwind CSS |
+| Deploy Frontend | Vercel |
+| Repositório | GitHub |
+| Backend | Next.js Fullstack |
+| Banco | Supabase |
+| Vetores | pgvector |
+| IA | OpenAI API |
+| Agentes | OpenAI Agents SDK |
+| Automação | n8n |
+| Storage | Supabase Storage |
+| Login | Google OAuth |
+
+---
+
+# OBJETIVO FINAL
+
+Criar uma inteligência operacional persistente capaz de:
+- acompanhar o usuário diariamente
+- aprender continuamente
+- centralizar conhecimento
+- auxiliar decisões
+- reduzir carga mental
+- organizar vida pessoal e profissional
+- evoluir como sistema cognitivo contextual

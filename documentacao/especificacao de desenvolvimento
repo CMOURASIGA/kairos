@@ -1,0 +1,329 @@
+# KAIROS
+## Fases de Desenvolvimento
+
+---
+
+# FASE 1 – FUNDAÇÃO TÉCNICA
+
+## Objetivo
+Criar a infraestrutura inicial do projeto e deixar o ambiente pronto para desenvolvimento contínuo.
+
+---
+
+## Entregas
+
+### Estrutura GitHub
+- criação do repositório
+- branch main
+- branch dev
+- padrão de commits
+- README inicial
+- .gitignore
+- .env.example
+
+---
+
+### Projeto base Next.js
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- estrutura inicial de pastas
+
+---
+
+### Estrutura inicial de frontend
+- layout principal
+- sidebar
+- header
+- navegação inicial
+- responsividade desktop/mobile
+
+---
+
+### Integração Supabase
+- cliente frontend
+- cliente server-side
+- conexão segura
+- separação de variáveis públicas e privadas
+
+---
+
+### Estrutura inicial do banco
+Criação das tabelas:
+
+```text
+profiles
+conversations
+messages
+memories
+projects
+decisions
+agent_runs
+```
+
+---
+
+# FASE 2 – NÚCLEO DO KAIROS
+
+## Objetivo
+Criar o funcionamento principal do Kairos.
+
+---
+
+## Entregas
+
+### Tela de chat principal
+- envio de mensagens
+- renderização de respostas
+- histórico de conversa
+- carregamento
+- responsividade
+
+---
+
+### API de chat
+- endpoint /api/chat
+- validação de payload
+- tratamento de erros
+- retorno padronizado
+
+---
+
+### Integração OpenAI
+- configuração da API
+- system prompt do Kairos Core
+- chamada server-side
+- seleção de modelos
+
+---
+
+### Kairos Core
+- interpretação de intenção
+- roteamento inicial
+- seleção automática de especialista
+- seleção manual de especialista
+
+---
+
+### Persistência de conversas
+- salvar mensagens
+- salvar histórico
+- recuperar conversas
+- continuar contexto
+
+---
+
+# FASE 3 – ESPECIALISTAS INICIAIS
+
+## Objetivo
+Criar os primeiros especialistas funcionais.
+
+---
+
+## Entregas
+
+### Kairos Geral
+- organização
+- orientação
+- conversa geral
+
+---
+
+### Kairos PM
+- resumo executivo
+- backlog
+- riscos
+- próximos passos
+- planejamento
+
+---
+
+### Kairos Study
+- resumos
+- explicações
+- revisão
+- perguntas
+
+---
+
+### Kairos Translate
+- tradução
+- explicação de expressões
+- contexto de uso
+- exemplos
+
+---
+
+# FASE 4 – MEMÓRIA AVANÇADA
+
+## Objetivo
+Transformar o Kairos em um sistema contextual persistente.
+
+---
+
+## Entregas
+
+### Memory Layer
+- recuperação de memória
+- contexto compartilhado
+- injeção contextual
+- persistência de aprendizado
+
+---
+
+### Embeddings
+- vetorização
+- recuperação semântica
+- similaridade contextual
+
+---
+
+### Memory Compression Engine
+- sumarização
+- compressão
+- descarte contextual
+- otimização de tokens
+
+---
+
+### Memory Priority System
+
+```text
+P0 crítico permanente
+P1 alta relevância
+P2 contexto ativo
+P3 temporária
+P4 descartável
+```
+
+---
+
+### Sistema de feedback
+- resposta útil/não útil
+- corrigir memória
+- marcar obsoleta
+- fixar memória
+
+---
+
+### Decision Engine
+- salvar decisões
+- salvar motivos
+- salvar impactos
+- vincular decisões a projetos
+
+---
+
+# FASE 5 – KAIROS DAILY
+
+## Objetivo
+Criar retenção e rotina operacional contínua.
+
+---
+
+## Entregas
+
+### Tela Daily
+- prioridades
+- pendências
+- agenda
+- riscos
+- perguntas inteligentes
+
+---
+
+### Daily automático
+- resumo operacional
+- insights
+- recomendações
+- acompanhamento contextual
+
+---
+
+### Interação contínua
+- respostas do usuário
+- atualização de memória
+- aprendizado operacional
+
+---
+
+# FASE 6 – AUTOMAÇÕES
+
+## Objetivo
+Conectar o Kairos ao ecossistema operacional do usuário.
+
+---
+
+## Entregas
+
+### Estrutura de integrações
+- camada genérica de integração
+- logs
+- monitoramento
+- controle de execução
+
+---
+
+### Integrações futuras
+- Gmail
+- Google Calendar
+- Google Drive
+- Azure DevOps
+- n8n
+
+---
+
+# FASE 7 – EVOLUÇÃO OPERACIONAL
+
+## Objetivo
+Transformar o Kairos em um sistema cognitivo mais avançado.
+
+---
+
+## Evoluções previstas
+- voz
+- contexto multimodal
+- proatividade
+- análise comportamental
+- automações inteligentes
+- sugestões operacionais
+- acompanhamento de metas
+- copiloto contínuo
+
+---
+
+# ORDEM DE EXECUÇÃO RECOMENDADA
+
+```text
+Fase 1 → Fundação
+Fase 2 → Núcleo
+Fase 3 → Especialistas
+Fase 4 → Memória Avançada
+Fase 5 → Daily
+Fase 6 → Automações
+Fase 7 → Evolução Cognitiva
+```
+
+---
+
+# PRIORIDADE INICIAL REAL
+
+O primeiro objetivo funcional será:
+
+```text
+Kairos Core
++
+Chat
++
+Memória básica
++
+Kairos PM
++
+Kairos Daily inicial
+```
+
+Porque isso já entrega:
+- valor real
+- retenção
+- diferencial competitivo
+- uso operacional contínuo

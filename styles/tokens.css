@@ -1,0 +1,13 @@
+:root {
+  --bg-page: #f5f7fb;
+  --bg-surface: #ffffff;
+  --bg-muted: #eef2f8;
+  --border: #d9e2f0;
+  --text-primary: #10223f;
+  --text-secondary: #4f5f7a;
+  --accent: #1355d9;
+  --accent-soft: #dbe6ff;
+  --success: #0b8f5e;
+  --warning: #b7791f;
+  --danger: #c0392b;
+}
